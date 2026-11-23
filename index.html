@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#00843D">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Catálogo QR">
+  <title>Catálogo QR · Almacén CFE Zona Campeche</title>
+
+  <!-- Tipografía Inter y una sola familia de íconos (Tabler Icons) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
+
+  <!-- Cuando subas una versión nueva de los archivos, cambia v=1 por v=2, v=3…
+       así los celulares descargan la versión nueva y no usan la guardada. -->
+  <link rel="stylesheet" href="estilos.css?v=1">
+</head>
+<body>
+  <!-- Encabezado verde -->
+  <header class="barra">
+    <button class="barra-btn" id="btnAtras" aria-label="Regresar" hidden><i class="ti ti-arrow-left"></i></button>
+    <div class="barra-titulo" id="titulo">Almacén CFE Zona Campeche</div>
+    <button class="barra-btn" id="btnUsuario" aria-label="Mi cuenta"><i class="ti ti-user-circle"></i></button>
+  </header>
+
+  <!-- Navegación (abajo en celular, a la izquierda en computadora) -->
+  <nav class="nav" id="nav" aria-label="Navegación principal">
+    <button data-ir="inicio"><i class="ti ti-home"></i><span>Inicio</span></button>
+    <button data-ir="buscar"><i class="ti ti-search"></i><span>Buscar</span></button>
+    <button data-accion="escanear" class="nav-escanear"><i class="ti ti-qrcode"></i><span>Escanear</span></button>
+    <button data-ir="catalogo"><i class="ti ti-layout-grid"></i><span>Catálogo</span></button>
+    <button data-ir="mas"><i class="ti ti-menu-2"></i><span>Más</span></button>
+  </nav>
+
+  <!-- Aquí se dibuja cada pantalla -->
+  <main id="app" class="app" tabindex="-1">
+    <div class="cargando-pantalla"><div class="spinner"></div><p>Cargando catálogo…</p></div>
+  </main>
+
+  <!-- Elementos auxiliares -->
+  <input type="file" id="inputEscaner" accept="image/*" capture="environment" hidden>
+  <div id="modal" class="modal" hidden></div>
+  <div id="aviso" class="aviso" role="status" aria-live="polite" hidden></div>
+  <div id="impresion" class="impresion"></div>
+
+  <!-- Librerías: generar QR y leer QR -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+  <!-- SheetJS (lectura de Excel) se carga solo cuando se necesita -->
+
+  <script src="config.js?v=1"></script>
+  <script src="app.js?v=1"></script>
+  <script>iniciarApp();</script>
+</body>
+</html>
